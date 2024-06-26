@@ -84,6 +84,28 @@
 </project>
 
 --------------------------------------------------------------------------------------------------------
+settings.xml
+--------------------------------------------------------------------------------------------------------
+
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <proxies>
+        <proxy>
+            <id>proxy</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>FGT_Proxy.cedmd.ced.it</host>
+            <port>8080</port>
+        </proxy>
+    </proxies>
+</settings>
+
+--------------------------------------------------------------------------------------------------------
+REFRESH TABLE
+--------------------------------------------------------------------------------------------------------
+
 public void refreshIngredientTable(DefaultTableModel tableModel, JTable table, String query){
         try (Connection conn = ConnectionManager.createConnection()) {
             try(ResultSet resultSet = conn.createStatement().executeQuery(query)){
@@ -136,8 +158,8 @@ public void refreshIngredientTable(DefaultTableModel tableModel, JTable table, S
 
 
 --------------------------------------------------------------------------------------------------------
-
-
+DATABASE
+--------------------------------------------------------------------------------------------------------
 
 
 SET @db_exists = (SELECT COUNT(*) FROM information_schema.schemata WHERE schema_name = 'cakeShop');
